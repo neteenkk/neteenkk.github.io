@@ -116,6 +116,7 @@ export default defineConfig({
   prefetch: true,
   // ! Please remember to replace the following site property with your own domain
   site: 'https://neteenkk.github.io/personal-site/',
+  base: '/personal-site/', 
   outDir: 'dist',
   vite: {
     build: {
