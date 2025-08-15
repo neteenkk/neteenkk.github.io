@@ -25,8 +25,8 @@ const dateTimeOptions: Intl.DateTimeFormatOptions = {
 
 const postSeries = content.data.seriesId
     ? await getCollection("series")
-          .then(series => series.find(s => s.id === content.data.seriesId))
-          .catch(err => {
+          .then((series: any) => series.find((s: any) => s.id === content.data.seriesId))
+          .catch((err: any) => {
             console.error("Failed to find series:", err);
             return null;
           })
@@ -108,12 +108,12 @@ const postSeries = content.data.seriesId
 	)
 }
 
-<p 
+<!-- <p 
 	class="prose max-w-none text-textColor mx-2"
 	data-pagefind-body
 >
 	{content.data.description}
-</p>
+</p> -->
 
 <div class="mt-4 flex flex-wrap items-center gap-2 mx-1">
 	{/* Tags */}
@@ -121,20 +121,21 @@ const postSeries = content.data.seriesId
 		content.data.tags?.length ? (
 			<Icon aria-hidden="true" class="flex-shrink-0 inline-block h-6 w-6 text-accent-base" focusable="false" name="solar:tag-line-duotone" />	
 			<>
-				{content.data.tags.map((tag) => (
+				{content.data.tags.map((tag:any) => (
 					<a aria-label={`View all posts with the tag: ${tag}`} href={`/tags/${tag}`}>
 						<Badge variant="accent-two" title={tag} />
 					</a>
 				))}
 			</>
 		) : (
-			<Icon aria-hidden="true" class="flex-shrink-0 inline-block h-6 w-6 text-lightest" focusable="false" name="solar:tag-line-duotone" />
-			<span class="text-sm text-lightest">No tags</span>
+			// <Icon aria-hidden="true" class="flex-shrink-0 inline-block h-6 w-6 text-lightest" focusable="false" name="solar:tag-line-duotone" />
+			// <span class="text-sm text-lightest">No tags</span>
+			<div></div>
 		)
 	}
 
 	{/* Series */}
-	{
+	<!-- {
 		postSeries ? (
 			<div class="flex items-center gap-2">
 				<Icon aria-hidden="true" class="flex-shrink-0 inline-block h-6 w-6 text-accent-base" focusable="false" name="solar:notes-line-duotone" />
@@ -152,5 +153,5 @@ const postSeries = content.data.seriesId
 				<span class="text-sm text-lightest">Not in series</span>
 			</div>
 		)
-	}
+	} -->
 </div>
