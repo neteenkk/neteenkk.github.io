@@ -20,14 +20,14 @@ draft: true
 	- proxy forwards the request to a node
 	- end-user/client talks to node
 
-![](image/consistent-hashing/Screenshot%202025-08-27%20at%203.17.56%20PM.png)
+![](img/consistent-hashing/Screenshot%202025-08-27%20at%203.17.56%20PM.png)
 
 - When the number of node changes the proxy will change the no of functions and it would not become fn%2.
 - Now all the keys would need to be re-evaluated and moved to the correct node (**involves a lot of data transfer**)
 
 #### Hash Fn (SHA128)
 - Given hash fn are cyclic we can visualize it as a ring of integers, every node occupies one slot in the integer, the slot is calculated by passing node's IP to hash fn.
-![](image/consistent-hashing/Pasted%20image%2020250827152457.png)
+![](img/consistent-hashing/Pasted%20image%2020250827152457.png)
 
 #### Scaling Up
 - When we add a new node to the "ring" Say node3 hashes to slot 1, The keys that hashed between slot 12 and slot will now be "owned" by node 3 instead of node O.
@@ -49,6 +49,6 @@ draft: true
 - The solution is to use what are called "**virtual nodes"**
 - Instead of putting each database at just one point on the ring, we put it at multiple points by hashing different variations of the database name.
 
-![](image/consistent-hashing/Pasted%20image%2020250827153037.png)
+![](img/consistent-hashing/Pasted%20image%2020250827153037.png)
 
 - The more the virtual nodes you use per database, the more evenly distributed the load becomes.

@@ -180,12 +180,12 @@ When it comes to triggering, there's three patterns that we'll commonly see:
 	5. The server adds that client to a map of connections.
 
  **DisAdv**: 
- - Hashing approach works great **when N is fixed**, but becomes problematic when we need to scale our service up or down. With simple modulo hashing, ==changing the number of servers would require almost all users to disconnect and reconnect to different servers - an expensive operation that disrupts service.== **Consistent Hashing** solves this problem
+ - Hashing approach works great **when N is fixed**, but becomes problematic when we need to scale our service up or down. With simple modulo hashing, changing the number of servers would require almost all users to disconnect and reconnect to different servers - an expensive operation that disrupts service.**Consistent Hashing** solves this problem
 
 #### Consistent Hashing (Approach 2)
 - Solves this by minimizing the number of connections that need to move when scaling. It maps both servers and users onto a hash ring, and each user connects to the next server they encounter when moving clockwise around the ring.
 - ###### When to Use Consistent Hashing
-	==Consistent hashing is ideal when you need to maintain persistent connections (WebSocket/SSE) and your system needs to scale dynamically. It's particularly valuable when each connection requires significant server-side state that would be expensive to transfer between servers.==
+	Consistent hashing is ideal when you need to maintain persistent connections (WebSocket/SSE) and your system needs to scale dynamically. It's particularly valuable when each connection requires significant server-side state that would be expensive to transfer between servers.
 
 #### Pushing via pub/sub
 - eg: kafka or redis
