@@ -13,7 +13,11 @@ permissions:
 
 concurrency:
   group: "pages"
-  cancel-in-progress: false
+  cancel-in-progress: true
+
+env:
+  GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+  COMMIT_MSG: ${{ github.event.head_commit.message }}
 
 jobs:
   build:
@@ -49,3 +53,22 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+  
+  send-email:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 290
+
+      - name: Install Dependencies
+        run: |
+          npm install
+
+      - name: Send Email
+        run: |
+          node .github/scripts/send-email.js
