@@ -13,7 +13,7 @@ tags: ["system-design", "hld"]
 ## let' see what happens under the hood ?
 - docs.api.google.com -> needs to be converted to an IP address, this requires round trip to the server(which is an overhead)
 - now we establish a TCP connection to the server, TCP requires a 3-way-handshake
-![](realtime-updates/Pasted%20image%2020250824123517.png)
+![](img/realtime-updates/Pasted%20image%2020250824123517.png)
 
 - Now the connection is established.
 - Now when we need to close the connection we need to send a 4-way-handshake.
@@ -37,7 +37,7 @@ tags: ["system-design", "hld"]
 	**Layer 4 Load Balancers**
 		- operate at the transport layer (TCP/UDP). They make routing decisions based on network information like IP addresses and ports, without looking at the actual content of the packets. 
 		- The effect of a L4 load balancer is as-if you randomly selected a backend server and assumed that TCP connections were established directly between the client and that server — this mental model is not far off
-		![](realtime-updates/Pasted%20image%2020250825214703.png)
+		![](img/realtime-updates/Pasted%20image%2020250825214703.png)
 	Key characteristics of L4 load balancers:
 	- Maintain persistent TCP connections between client and server.
 	- Fast and efficient due to minimal packet inspection.
@@ -57,7 +57,7 @@ When systems require real-time updates, push notifications, etc, the solution re
 - In case of long polling the server holds the request open until data is available or timeout occurs.
 - This cuts down the no of times when the server has to reply no updates when nothing has really changed. But server has to process a request for large amt of time.
 - It also introduces extra latency between client and server.
-![](realtime-updates/Pasted%20image%2020250824125039.png)
+![](img/realtime-updates/Pasted%20image%2020250824125039.png)
 - here for the second response we have an extra latency, because the client had to make the request back to get the update.
 
 	Note: Not suitable when we need to send high frequency updates, near to one other back to client. (refer above eg)
@@ -118,9 +118,9 @@ Why it matters:
 -  **Adv** : Direct peer communication, Lower Latency, Native audio/video support
 - **DisAdv** : Complex setup, Requires signalling server, NAT/firewall issues
 
-![](realtime-updates/Pasted%20image%2020250824140643.png)
+![](img/realtime-updates/Pasted%20image%2020250824140643.png)
 
-![](realtime-updates/Pasted%20image%2020250826083549.png)
+![](img/realtime-updates/Pasted%20image%2020250826083549.png)
 - Peers discovers each other through signalling server
 - Exchange connection Info
 - Establish peer connection using STUN/TURN server
@@ -142,7 +142,7 @@ Why it matters:
 
 
 **TLDR**;
-![](realtime-updates/Pasted%20image%2020250826084632.png)
+![](img/realtime-updates/Pasted%20image%2020250826084632.png)
 
 ________________________________________________________________________
 
@@ -169,7 +169,7 @@ When it comes to triggering, there's three patterns that we'll commonly see:
 - ##### Simple Hashing (Approach 1)
 	- Central service that knows how many servers there are N and can assign them each a number 0 through N-1 (**Zookeeper**)
 	- Randomly connect to any of the servers and have that server redirect them to the appropriate server based on internal data.
-	![](realtime-updates/Pasted%20image%2020250827092818.png)
+	![](img/realtime-updates/Pasted%20image%2020250827092818.png)
 
 
  When a client connects, the following happens:
@@ -189,7 +189,7 @@ When it comes to triggering, there's three patterns that we'll commonly see:
 
 #### Pushing via pub/sub
 - eg: kafka or redis
-![](realtime-updates/Pasted%20image%2020250827094957.png)
+![](img/realtime-updates/Pasted%20image%2020250827094957.png)
 
 - **Working**:
 	- Persistent connections are now made to lightweight servers which simply subscribe to the relevant topics and forward the updates to the appropriate clients, **endpoint servers**
