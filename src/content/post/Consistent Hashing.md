@@ -3,7 +3,6 @@ title: Consistent Hashing
 description: --
 publishDate: "2025-08-27T10:03:06.055Z"
 tags: ["system-design", "hld", "hld-concepts"]
-draft: true
 ---
 - One of the most amazing and popular algorithm out there and the only problem it solves is **Data ownership**.
 - It will not transfer data for us it is not a service in "itself"
