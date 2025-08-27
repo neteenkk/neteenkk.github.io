@@ -1,7 +1,8 @@
 const nodemailer = require("nodemailer");
 const COMMIT_MSG = process.env.COMMIT_MSG || " New Blog Published"
 const transporter = nodemailer.createTransport({
-  host: "smtp.example.com",
+  service: 'Gmail',
+  host: 'smtp.gmail.com',
   port: 587,
   secure: false,
   auth: {
