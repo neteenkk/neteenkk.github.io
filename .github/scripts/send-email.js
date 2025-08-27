@@ -5,7 +5,7 @@ const transporter = nodemailer.createTransport({
   port: 587,
   secure: false,
   auth: {
-    user: "neteenk@gmail.com",
+    user: "nitinkumar21038@gmail.com",
     pass: process.env.GMAIL_APP_PASSWORD,
   },
 });
@@ -14,8 +14,8 @@ const transporter = nodemailer.createTransport({
 (async () => {
     try {
         const info = await transporter.sendMail({
-            from: '"Team" <neteenkk@gmail.com>',
-            to: "nitinkumar21038@gmail.com",
+            from: '"Team" <nitinkumar21038@gmail.com>',
+            to: "neteenkk@gmail.com",
             subject: COMMIT_MSG,
             html: `<b>Checkout new Blog published ${COMMIT_MSG}</b>`,
         });
