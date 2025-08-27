@@ -1,5 +1,8 @@
 const nodemailer = require("nodemailer");
-const COMMIT_MSG = process.env.COMMIT_MSG || " New Blog Published"
+
+const COMMIT_MSG = `New Blog ${process.env.COMMIT_MSG} out now!!` || " New Blog out now !!"
+const SITE_URL = "https://neteenkk.github.io"
+
 const transporter = nodemailer.createTransport({
   service: 'Gmail',
   host: 'smtp.gmail.com',
@@ -15,10 +18,10 @@ const transporter = nodemailer.createTransport({
 (async () => {
     try {
         const info = await transporter.sendMail({
-            from: '"Team" <nitinkumar21038@gmail.com>',
-            to: "neteenkk@gmail.com",
+            from: '"nitin"<nitinkumar21038@gmail.com>',
+            to: "neteenkk@gmail.com, neerajkumar30may@gmail.com, nitishkumarmay30@gmail.com",
             subject: COMMIT_MSG,
-            html: `<b>Checkout new Blog published ${COMMIT_MSG}</b>`,
+            html: `<b>Checkout new Blog published at ${SITE_URL}/posts/${COMMIT_MSG}</b>`,
         });
         console.log("debug sent: %s", info);
     } catch (error) {
