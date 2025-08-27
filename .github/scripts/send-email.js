@@ -2,7 +2,7 @@ const nodemailer = require("nodemailer");
 
 const COMMIT_MSG = `New Blog ${process.env.COMMIT_MSG} out now!!` || " New Blog out now !!"
 const SITE_URL = "https://neteenkk.github.io"
-const POST_URL = `${SITE_URL}/posts/${process.env.COMMIT_MSG}.md`
+const POST_URL = `${SITE_URL}/posts/${process.env.COMMIT_MSG}/`
 
 const transporter = nodemailer.createTransport({
   service: 'Gmail',
