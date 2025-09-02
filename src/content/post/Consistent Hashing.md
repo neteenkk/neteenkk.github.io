@@ -1,9 +1,10 @@
 ---
 title: Consistent Hashing
-description: --
+description: Popular algorithm out there and the only problem it solves is Data ownership
 publishDate: "2025-08-27T10:03:06.055Z"
 tags: ["system-design", "hld", "hld-concepts"]
 ---
+## Consistent Hashing
 - One of the most amazing and popular algorithm out there and the only problem it solves is **Data ownership**.
 - It will not transfer data for us it is not a service in "itself"
 - Consistent Hashing applies to any scenarios where you need to distribute data across cluster of servers. Used in Cassandra, DynamoDB and CDNs.
